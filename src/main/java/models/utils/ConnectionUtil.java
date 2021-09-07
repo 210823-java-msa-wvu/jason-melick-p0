@@ -30,6 +30,7 @@ public class ConnectionUtil {
 
     // method to establish connection to AWS DB
     // check for existing connection first
+    // if none present, create a new instance of the ConnectionUtil object called 'cu'
     public static ConnectionUtil getConnectionUtil(){
         if(cu == null){
             // is there an existing connection? If not, create a new one.
