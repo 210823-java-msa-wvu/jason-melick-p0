@@ -154,7 +154,7 @@ public class User {
     @Override
     public String toString(){
         return firstName + " " + lastName + "\n" +
-                "Username: " + userName;
+                "Password: " + password + "\n" + "userid" + userId;
     }
 
 }

@@ -59,7 +59,7 @@ public class ConnectionUtil {
         return conn;
     }
 
-    public static void main(String[] args){
+    /*public static void main(String[] args){
 
         Connection connection = getConnectionUtil().getConnection();
 
@@ -69,7 +69,7 @@ public class ConnectionUtil {
         }else{
             System.out.println("The attempt to establish a DB was unsuccessful.");
         }
-    }
+    }*/
 }
 
 
