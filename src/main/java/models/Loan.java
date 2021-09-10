@@ -8,11 +8,11 @@ public class Loan {
 
     Integer loanId; // loan serial number
     Integer userId; // the customer's user serial from users table in DB
-    BigDecimal loanAmt; // original loan principal
-    BigDecimal monthly; // monthly payment amount
-    BigDecimal pmt; // amount paid this month default 0 in sql
-    BigDecimal startBal; // balance at the start of the period
-    BigDecimal endBal; // startbal minus any payments
+    Integer loanAmt; // original loan principal
+    // BigDecimal monthly; // monthly payment amount
+    // BigDecimal pmt; // amount paid this month default 0 in sql
+    // BigDecimal startBal; // balance at the start of the period
+    // BigDecimal endBal; // startbal minus any payments
     Date appDate; // date the loan was approved
     Integer appBy; // employee ID of the approving loan officer
     String status; // "Pending, Approved, Denied, Current, or Flag"
@@ -20,16 +20,17 @@ public class Loan {
     // constructors
     Loan(){}
 
-    Loan(Integer loanId, Integer userId, BigDecimal loanAmt, BigDecimal monthly, BigDecimal pmt, BigDecimal startBal, BigDecimal endBal, Date appDate, Integer appBy, String status){
-        this.loanId = loanId;
+    // for creating a new loan
+    Loan(Integer userId, Integer loanAmt, String status){
+        // this.loanId = loanId;
         this.userId = userId;
         this.loanAmt = loanAmt;
-        this.monthly = monthly;
-        this.pmt = pmt;
-        this.startBal = startBal;
-        this.endBal = endBal;
-        this.appDate = appDate;
-        this.appBy = appBy;
+        // this.monthly = monthly;
+        // this.pmt = pmt;
+        // this.startBal = startBal;
+        // this.endBal = endBal;
+        //this.appDate = appDate;
+        //this.appBy = appBy;
         this.status = status;
     }
 
@@ -51,45 +52,45 @@ public class Loan {
     }
 
     // loanAmt BigDecimal
-    public BigDecimal getLoanAmt(){
+    public Integer getLoanAmt(){
         return this.loanAmt;
     }
-    public void setLoanAmt(BigDecimal loanAmt){
+    public void setLoanAmt(Integer loanAmt){
         this.loanAmt = loanAmt;
     }
 
     // monthly BigDecimal
-    public BigDecimal getMonthly(){
+    /*public Integer getMonthly(){
         return this.monthly;
     }
-    public void setMonthly(BigDecimal monthly){
+    public void setMonthly(Integer monthly){
         this.monthly = monthly;
-    }
+    }*/
 
-    // pmt BigDecimal
-    public BigDecimal getPmt(){
+    // pmt Integer
+    /*public Integer getPmt(){
         return this.pmt;
     }
-    public void setPmt(BigDecimal pmt){
+    public void setPmt(Integer pmt){
         this.pmt = pmt;
     }
 
-    // startBal BigDecimal
-    public BigDecimal getStartBal(){
+    // startBal Integer
+    public Integer getStartBal(){
         return this.startBal;
     }
-    public void setStartBal(BigDecimal startBal){
+    public void setStartBal(Integer startBal){
         this.startBal = startBal;
     }
 
-    // startBal BigDecimal
-    public BigDecimal getEndBal(){
+    // startBal Integer
+    public Integer getEndBal(){
         return this.endBal;
     }
-    public void setEndBal(BigDecimal endBal){
+    public void setEndBal(Integer endBal){
         this.endBal= endBal;
     }
-
+*/
     // appDate date
     public Date getAppDate(){
         return this.appDate;

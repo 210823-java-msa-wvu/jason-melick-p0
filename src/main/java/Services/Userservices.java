@@ -1,26 +1,41 @@
 package Services;
 
+import models.Acct;
 import models.User;
+import repositories.Daoacct;
 import repositories.Daouser;
+
+import java.util.Scanner;
 
 public class Userservices {
 
+    Daouser dao = new Daouser();
+    Daoacct da = new Daoacct();
+    Stringservices ss = new Stringservices();
+
     public boolean credPass(String username, String password){
-        Daouser dao = new Daouser();
-        User u = dao.getUserCredentials(username);
+        User u = dao.getByUserName(username);
         if(u.getPassword().equals(password)){
             return true;
         } else return false;
     }
 
-    public static void main(String[]args){
-        Userservices us = new Userservices();
-        Daouser dao = new Daouser();
-        String un = "testun1!";
-        String pass = "testpass1!";
-        User u = dao.getUserCredentials(un);
-        System.out.println(u.getPassword());
-        System.out.println(u);
-        System.out.println(us.credPass(un, pass));
+    public User newUser(Acct a){
+        boolean created = false;
+        User u = new User();
+
+        while (!created){
+            System.out.println("Please enter your first name:");
+            u.setFirstName(ss.getStrInput());
+            System.out.println("Please enter your last name");
+            u.setLastName(ss.getStrInput());
+            System.out.println("Please enter your email address:");
+            u.setEmail(ss.getEmailInput());
+            System.out.println("Please enter your 10-digit phone number (numbers only):");
+            u.setPhNum(ss.getPhInput());
+            System.out.println("Please enter your date-of-birth in 'MMDDYYYY' format:");
+            u.setDob(ss.getDateInput());
+        }
     }
+
 }

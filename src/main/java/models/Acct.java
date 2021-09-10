@@ -10,7 +10,8 @@ public class Acct {
 
     private Integer acctId; // account ID will correspond to record number in database
     private Integer acctNum; // account number should be not null, unique primary key, must be 10 digits with no leading zeros
-    private BigDecimal bal;  // user's current balance
+    private Integer bal;  // user's current balance
+    private String ssn;
     private boolean isOverdrawn; // will let us know if the customer's balance is negative
     private String flag; // will be "N" if user's account is not overdrawn. "Y" if they have a negative balance
     private Integer userId; // customer ID field should match same column in User table (foreign key)
@@ -21,15 +22,15 @@ public class Acct {
     }
 
     // for querying the account in the user view or LO views
-    public Acct(Integer custId, Integer acctNum, BigDecimal bal, boolean isOverdrawn){
-        this.userId = userId;
-        this.acctNum = acctNum;
+    public Acct(Integer acctId, String ssn, Integer bal, String flag){
+        this.acctId = acctId;
+        this.ssn = ssn;
         this.bal = bal;
-        this.isOverdrawn = isOverdrawn;
+        this.flag = flag;
     }
 
     // for SQL handling
-    public Acct(Integer custId, Integer acctId, Integer acctNum, BigDecimal bal, boolean isOverdrawn, String flag){
+    public Acct(Integer custId, Integer acctId, Integer acctNum, Integer bal, boolean isOverdrawn, String flag){
         this.userId = userId;
         this.acctId = acctId;
         this.acctNum = acctNum;
@@ -44,14 +45,6 @@ public class Acct {
         return this.userId;
     }
     public void setUserId(Integer userId){
-        this.userId = userId;
-    }
-
-    // custId Integer
-    public Integer getCustId(){
-        return this.userId;
-    }
-    public void setuserId(Integer userId){
         this.userId = userId;
     }
 
@@ -72,11 +65,19 @@ public class Acct {
     }
 
     // bal BigDecimal
-    public BigDecimal getBal(){
+    public Integer getBal(){
         return this.bal;
     }
-    public void setBal(BigDecimal bal){
+    public void setBal(int bal){
         this.bal = bal;
+    }
+
+    // ssn String
+    public String getSsn() {
+        return ssn;
+    }
+    public void setSsn(String ssn) {
+        this.ssn = ssn;
     }
 
     // isOverdrawn boolean
@@ -98,9 +99,10 @@ public class Acct {
     // override toString() method
     @Override
     public String toString(){
-       return  "Account Number: " + acctId + "\n" +
-                "Current Balance: " + bal + "\n" +
-                "Currently Overdrawn? " + flag;
+       return  "Account ID: " + acctId + "\n" +
+               "Social Security Number: " + ssn+ "\n" +
+               "Balance: " + bal + "\n" +
+               "Currently Overdrawn? " + flag;
     }
 
 }

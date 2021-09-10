@@ -8,13 +8,16 @@ import models.User;
 
 import static models.utils.ConnectionUtil.getConnectionUtil;
 import java.sql.Connection;
+import models.Acct;
+
+// userId, firstName, lastName, email, phNum, ssn, dob, userName, password, fico
 
 
 public class Daouser{
 
     // pull user's name and password for logging in
     // User user = new User();
-    public User getUserCredentials(String username){
+    public User getByUserName(String username){
 
         try(Connection connection = getConnectionUtil().getConnection()){
 
@@ -25,10 +28,15 @@ public class Daouser{
 
             if(rs.next()){
                 User u = new User();
+                u.setUserId(rs.getInt("user_id"));
                 u.setFirstName(rs.getString("first_name"));
                 u.setLastName(rs.getString("last_name"));
+                u.setEmail(rs.getString("email"));
+                u.setPhNum(rs.getInt("phone"));
+                u.setSsn(rs.getString("ssn"));
+                u.setDob(rs.getDate("dob"));
                 u.setPassword(rs.getString("password"));
-                u.setuserId(rs.getInt("user_id"));
+                u.setFico(rs.getInt("fico"));
                 return u;
             }
 
@@ -38,29 +46,8 @@ public class Daouser{
         return null;
     }
 
-    // to view user accounts
-/*    public List<User> getUserAccount(Integer userId){
 
-        List<User> account = new ArrayList<>();
 
-        try(Connection connection = getConnectionUtil().getConnection()){
-
-            String sql = "SELECT * FROM accounts WHERE user_id = ?";
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, userId);
-
-            ResultSet rs = ps.executeQuery();
-
-            while(rs.next()){
-                   account.add
-                           new User(rs.getString(1));
-            }
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            return account;
-    }*/
 
     /*public static void main(String[] args) {
     Daouser test = new Daouser();

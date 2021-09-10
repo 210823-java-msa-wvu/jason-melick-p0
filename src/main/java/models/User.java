@@ -9,10 +9,10 @@ public class User {
     private String firstName; // Must not be null. First Letter must be capitalized
     private String lastName; // Must not be null. First letter must be capitalized
     private String email; // Can be null. can contain alpha-numeric, hyphens, underscore, dash or dash. MUST contain the @ symbol, and end with a period followed by 3 letters. limit 20 characters
-    private String phNum; // user's phone number trimmed to exclude any non-numeric characters. must be 10 digits in length
+    private Integer phNum; // user's phone number trimmed to exclude any non-numeric characters. must be 10 digits in length
     private String ssn; // Must be a sequence of chars matching the pattern 'XXX-XX-XXXX', must be unique and not null
 
-    private Date dob; // will be handled as int'YYYY', int 'MM',' int 'DD' at the controller(Java) layer.
+    private Date dob;   // will be handled as int'YYYY', int 'MM',' int 'DD' at the controller(Java) layer.
                         // Handled as a String at the DB layer in the format 'YYYY-MM-DD'
                         // Handled as a String "MM/DD/YYYY" at the presentation layer(Java Console)
 
@@ -53,7 +53,7 @@ public class User {
     }
 
     // constructor for new account creation, or superUser query/modification
-    public User (Integer userId, String firstName, String lastName, String email, String phNum, String ssn, Date dob, String userName, String password){
+    public User (Integer userId, String firstName, String lastName, String email, Integer phNum, String ssn, Date dob, String userName, String password, Integer fico){
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -63,6 +63,7 @@ public class User {
         this.dob = dob;
         this.userName = userName;
         this.password = password;
+        this.fico = fico;
     }
 
     // create getter and setter methods for passing information to/from the console
@@ -74,7 +75,7 @@ public class User {
     public Integer getuserId() {
         return this.userId;
     }
-    public void setuserId(Integer userId){
+    public void setUserId(Integer userId){
         this.userId = userId;
     }
 
@@ -103,10 +104,10 @@ public class User {
     }
 
     //phNum Integer
-    public String getPhNum(){
+    public Integer getPhNum(){
         return this.phNum;
     }
-    public void setPhNum(String phNum){
+    public void setPhNum(Integer phNum){
         this.phNum = phNum;
     }
 

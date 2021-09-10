@@ -21,4 +21,6 @@
         </dependency>
     </dependencies>
 
+    <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+
 </project>
