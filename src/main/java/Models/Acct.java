@@ -1,6 +1,4 @@
-package models;
-
-import java.math.BigDecimal;
+package Models;
 
 public class Acct {
 

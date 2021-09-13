@@ -1,6 +1,5 @@
-package models;
+package Models;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 
@@ -18,10 +17,10 @@ public class Loan {
     String status; // "Pending, Approved, Denied, Current, or Flag"
 
     // constructors
-    Loan(){}
+    public Loan(){}
 
     // for creating a new loan
-    Loan(Integer userId, Integer loanAmt, String status){
+    public Loan(Integer userId, Integer loanAmt, String status){
         // this.loanId = loanId;
         this.userId = userId;
         this.loanAmt = loanAmt;
@@ -113,6 +112,13 @@ public class Loan {
     }
     public void setStatus(String status){
         this.status = status;
+    }
+
+    // override toString method
+    @Override
+    public String toString(){
+        return  "Loan ID: " + loanId + "  User ID: " + userId + "  Amount: $ " + loanAmt;
+                //"Status: " + status;
     }
 
 }

@@ -1,59 +1,57 @@
 package App.Userapps;
-import App.Selectview;
+
 import Services.Acctservices;
-import Services.Userservices;
-import models.User;
-import models.Acct;
-import repositories.Daoacct;
-import repositories.Daouser;
-import repositories.Doaloan;
+import Models.User;
+import Models.Acct;
+import Repositories.Daoacct;
+import Repositories.Doaloan;
 
 import java.util.Scanner;
 
 public class Userview {
 
     public void userView(User user) {
-        //System.out.println(user);
+
         Userview uv = new Userview();
-        Daouser dao = new Daouser();
-        Userservices us = new Userservices();
-        Acctservices as = new Acctservices();
         Daoacct da = new Daoacct();
         Doaloan dl = new Doaloan();
-
-        //System.out.println(acct);
-
+        Acctservices as = new Acctservices();
 
         boolean running = true;
 
         while (running){
+
             Acct acct = da.getAcctById(user.getuserId());
+
             System.out.println("\nPlease select an option: " + "\n1: View your balance\n2: Make a deposit\n3: Make a withdrawal\n4: Apply for a loan\n5: EXIT");
+
             int selection = uv.getIntInput();
+
             switch (selection) {
+
                 case 1: {
                     System.out.println("\nYour balance is:");
                     System.out.println(acct.getBal());
                     break;
                 }
+
                 case 2: {
                     System.out.println("\nMake a deposit");
-                    int amt = uv.getAmt();
+                    int amt = uv.getAmtInput();
                     as.deposit(acct, amt);
                     break;
                 }
+
                 case 3: {
                     System.out.println("\nMake a withdrawal ");
-                    int amt = uv.getAmt();
+                    int amt = uv.getAmtInput();
                     as.withdrawal(acct, amt);
-                    //acct = as.withdrawal(acct, amt);
-                    //System.out.println("Your new balance is: " + acct.getBal());
                     break;
                 }
 
                 case 4: {
                     System.out.println("\nApply for a loan ");
-                    int amt = uv.getAmt();
+                    int amt = uv.getAmtInput();
                     dl.createLoan(amt, user);
                     System.out.println("\n$" + amt + " applied for. Approval pending.");
                     break;
@@ -70,7 +68,6 @@ public class Userview {
         }
     }
 
-    // method to collect input for option selection
     public int getIntInput(){
 
         int selection = -1;
@@ -81,14 +78,14 @@ public class Userview {
                 selection = Integer.parseInt(scan.nextLine());
             }
             catch (NumberFormatException e){
-                e.printStackTrace();
+                //e.printStackTrace();
                 System.out.println("Invalid selection. Please try again:");
             }
         }
         return selection;
     }
 
-    public int getAmt(){
+    public int getAmtInput(){
         Scanner scan = new Scanner(System.in);
         int amt = 0;
 
@@ -97,12 +94,12 @@ public class Userview {
             try{
                 System.out.println("Enter amount:");
                 amt = scan.nextInt();
+
             }catch (NumberFormatException e){
-                e.printStackTrace();
+                //e.printStackTrace();
                 System.out.println("Amount not valid. Please try again");
             }
         }
-        //scan.close();
         return amt;
     }
 

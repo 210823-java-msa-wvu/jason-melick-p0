@@ -1,4 +1,4 @@
-package models.utils;
+package Models.utils;
 
 import java.io.IOException;
 import java.io.InputStream;

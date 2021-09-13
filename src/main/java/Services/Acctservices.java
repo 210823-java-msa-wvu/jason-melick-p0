@@ -1,6 +1,6 @@
 package Services;
-import models.Acct;
-import repositories.Daoacct;
+import Models.Acct;
+import Repositories.Daoacct;
 
 
 public class Acctservices {
@@ -25,7 +25,7 @@ public class Acctservices {
     public boolean acctExist(String ssn){
 
         if(da.getAcctBySsn(ssn) != null) {
-            Acct a = da.getAcctBySsn(ssn);
+
             return true;
         }
         return false;
