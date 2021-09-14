@@ -2,17 +2,13 @@ package Models;
 
 public class Acct {
 
-    // there will be an accounts table in sql that holds only the basic information about the account
-    // the transaction ledger will be a separate table
-    // each customer *may* have their own account ledger table depending on time
-
-    private Integer acctId; // account ID will correspond to record number in database
-    private Integer acctNum; // account number should be not null, unique primary key, must be 10 digits with no leading zeros
-    private Integer bal;  // user's current balance
+    private Integer acctId;
+    private Integer acctNum;
+    private Integer bal;
     private String ssn;
-    private boolean isOverdrawn; // will let us know if the customer's balance is negative
-    private String flag; // will be "N" if user's account is not overdrawn. "Y" if they have a negative balance
-    private Integer userId; // customer ID field should match same column in User table (foreign key)
+    private boolean isOverdrawn;
+    private String flag;
+    private Integer userId;
 
     // create constructors to match various use cases
     public Acct(){
@@ -102,5 +98,4 @@ public class Acct {
                "Balance: " + bal + "\n" +
                "Currently Overdrawn? " + flag;
     }
-
 }

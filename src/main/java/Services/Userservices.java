@@ -15,12 +15,14 @@ public class Userservices {
 
         User u = du.getByUserName(username);
 
-        try {
+       try {
+
             if(u.getPassword().equals(password)){
                 return true;
             }
 
-        } catch (NullPointerException e){
+       }catch (NullPointerException e){
+
             System.out.println("Credentials do not match.");
         }
         return false;
@@ -48,10 +50,12 @@ public class Userservices {
                     "\nMust include one uppercase one lowercase one digit and one special character:");
             u.setPassword(ss.getStrInput());
             u.setSsn(a.getSsn());
+            u.setFico(ss.assignRandomFico());
 
             du.create(u);
 
             User user = du.getNewByUserName(u);
+
             int newId = user.getuserId();
             int accId = a.getAcctId();
 

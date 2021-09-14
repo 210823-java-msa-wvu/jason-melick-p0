@@ -58,38 +58,6 @@ public class Loan {
         this.loanAmt = loanAmt;
     }
 
-    // monthly BigDecimal
-    /*public Integer getMonthly(){
-        return this.monthly;
-    }
-    public void setMonthly(Integer monthly){
-        this.monthly = monthly;
-    }*/
-
-    // pmt Integer
-    /*public Integer getPmt(){
-        return this.pmt;
-    }
-    public void setPmt(Integer pmt){
-        this.pmt = pmt;
-    }
-
-    // startBal Integer
-    public Integer getStartBal(){
-        return this.startBal;
-    }
-    public void setStartBal(Integer startBal){
-        this.startBal = startBal;
-    }
-
-    // startBal Integer
-    public Integer getEndBal(){
-        return this.endBal;
-    }
-    public void setEndBal(Integer endBal){
-        this.endBal= endBal;
-    }
-*/
     // appDate date
     public Date getAppDate(){
         return this.appDate;

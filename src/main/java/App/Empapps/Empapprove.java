@@ -81,17 +81,21 @@ public class Empapprove {
     public String getLetterInput() {
         Stringservices ss = new Stringservices();
         Scanner scan = new Scanner(System.in);
-        //scan.close();
+
         boolean valid = false;
         String letter = "";
         String letters = "adrx";
+
         while (!valid) {
+
             String newInput = scan.nextLine().toLowerCase();
+
             if (ss.isLetter(newInput) && newInput.length() == 1) {
+
                 if(letters.contains(newInput)){
                 valid = true;
                 letter = newInput;
-                break;
+
                 }
             } else {
                 System.out.println("Input contains invalid characters. Please try again.");

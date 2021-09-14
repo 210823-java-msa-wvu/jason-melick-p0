@@ -2,6 +2,8 @@ package App;
 
 import App.Empapps.Emplogin;
 import App.Userapps.Userlogin;
+import Exceptions.InvalidInputException;
+
 import java.util.Scanner;
 
 public class Selectview {
@@ -29,7 +31,11 @@ public class Selectview {
                 }
                 case 2: {
                     System.out.println("\nProceeding to Employee Login.");
-                    el.loginView();
+                    try {
+                        el.loginView();
+                    } catch (InvalidInputException e) {
+                        //e.printStackTrace();
+                    }
                     running = false;
                     break;
                 }

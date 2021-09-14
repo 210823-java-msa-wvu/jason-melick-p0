@@ -16,8 +16,7 @@ public class Doaloan {
     public void createLoan(Integer amt, User u){
 
         try(Connection connection = getConnectionUtil().getConnection()){
-            //System.out.println(amt);
-            //System.out.println(u);
+
             String sql = "INSERT INTO loans (user_id, loan_amt, status) VALUES (?,?,?)";
 
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -98,7 +97,6 @@ public class Doaloan {
             //System.out.println("TEST Daoloan updateStatus" + empId +"  " );
             PreparedStatement ps = connection.prepareStatement(sql);
 
-            //update the balance and whether or not the account is flagged
             ps.setString(1, loan.getStatus());
             ps.setInt(2, empId);
             ps.setInt(3, loanId);

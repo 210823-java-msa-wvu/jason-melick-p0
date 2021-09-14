@@ -19,13 +19,18 @@ public class Emploanview {
         boolean running = true;
 
         while (running) {
+
             ArrayList<Loan> theseLoans = dl.getAllByStatus("pending");
             theseLoans.forEach(System.out::println);
 
             int whichLoan = elv.getLoanSelection();
+
             if(whichLoan == 0){
-                break;
+
+                running = false;
+
             }else {
+
                 Loan thisLoan = dl.getById(whichLoan);
                 System.out.println(thisLoan);
                 Integer thisLoanUserId =  thisLoan.getUserId();
@@ -44,7 +49,7 @@ public class Emploanview {
                 System.out.println("Please enter Loan ID:");
                 selection = Integer.parseInt(scan.nextLine());
             } catch (NumberFormatException e) {
-                e.printStackTrace();
+                // e.printStackTrace();
                 System.out.println("Invalid selection. Please try again:");
             }
 

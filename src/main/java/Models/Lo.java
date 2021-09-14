@@ -2,20 +2,14 @@ package Models;
 
 public class Lo {
 
-    private Integer empId; // not null, primary key, unique
-    private String firstName; // only alphabetic, apostrophe, hyphen, and spaces.
-    private String lastName; // same rules as firstName
-    private String email; // only lower-case, and shifted number characters plus _- limit 30 caracters must end in mybank.com
-    private String phNum; // modified to 10-digit string of numbers
-    private String userName; //case-sensitive, unique, not null, 8-12 alpha-numeric characters. can include underscores or all symbols from shift+ 0-9. no apostrophes, equals, or forward slash
-    private String password; //case-sensitive, unique, not null, 8-12 alpha-numeric characters. can include underscores or all symbols from shift+ 0-9. no apostrophes, equals, or forward slash
-    // must not contain 'pass', 'password', or any characters that repeat 4 or more times
+    private Integer empId;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String phNum;
+    private String userName;
+    private String password;
     private String ssn; //will be handled as a string in format "XXX-XX-XXXX"
-    private String dob; //will be handled as a string "MM/DD/YYYY" at the application/presentation layers
-    //handled as a string "YYYY/MM/DD" by the Data layer
-
-    // create constructors for the LoanOfficer class for various use cases
-    // should be public, so they can be used by methods outside the class
 
     // default no-args constructor
     public Lo(){
@@ -36,7 +30,6 @@ public class Lo {
         this.userName = userName;
         this.password = password;
         this.ssn = ssn;
-        this.dob = dob;
     }
 
     // getter and setter methods for each private instance variable. getters should have the correct return type. setters should be void as they don't return anything
@@ -103,14 +96,6 @@ public class Lo {
     }
     public void setSsn(String ssn){
         this.ssn = ssn;
-    }
-
-    // dob
-    public String getDob(){
-        return this.dob;
-    }
-    public void setDob(String dob){
-        this.dob = dob;
     }
 
     // we do not want the memory address to print out when referring to an object of this class

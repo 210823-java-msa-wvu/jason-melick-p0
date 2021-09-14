@@ -13,10 +13,13 @@ public class Empservices {
 
         try {
             if (employee.getPassword().equals(password)) {
+
                 return true;
             }
         } catch(NullPointerException e){
+
             System.out.println("Credentials do not match.");
+
         }
         return false;
     }

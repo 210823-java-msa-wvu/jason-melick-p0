@@ -72,7 +72,9 @@ public class Userview {
 
         int selection = -1;
         while (selection < 0 || selection > 5){
+
             Scanner scan = new Scanner(System.in);
+
             try{
                 System.out.println("Please enter your choice:");
                 selection = Integer.parseInt(scan.nextLine());

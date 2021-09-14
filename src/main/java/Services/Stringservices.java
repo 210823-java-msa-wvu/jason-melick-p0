@@ -1,35 +1,45 @@
 package Services;
 
+import Exceptions.InvalidInputException;
+
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Stringservices {
 
-    public boolean isValidUnPass(String str) {
+    public boolean isValidUnPass(String str) throws InvalidInputException{
 
         if (str.matches("^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$])[a-zA-Z0-9!@#$]+$")) {
 
             return true;
+
+        } else {
+
+            throw new InvalidInputException("Not a valid username/password. Please try again.");
+
         }
-        return false;
     }
 
-    public boolean isValidPh(String  phone) {
+    public boolean isValidPh(String  phone) throws InvalidInputException{
+
         String str = String.valueOf(phone);
 
-        if (str.matches("(^[0-9]+)") || str.length() == 10){
+        if (str.matches("(^[0-9]+)") && str.length() == 10){
 
             return true;
+
+        } else {
+
+            throw new InvalidInputException("Not a valid phone number. Please try again.");
         }
-        return false;
     }
 
-    public boolean isLetter(String  phone) {
+    public boolean isLetter(String  letter) {
 
-        String str = String.valueOf(phone);
+        String str = String.valueOf(letter);
 
-        if (str.matches("(^[A-Za-z]+)") || str.length() == 1){
+        if (str.matches("(^[A-Za-z]+)") && str.length() == 1){
 
             return true;
         }
@@ -63,15 +73,18 @@ public class Stringservices {
 
         while (!valid) {
 
-            String newInput = scan.nextLine();
+            try {
 
-            if (ss.isValidUnPass(newInput)) {
+                String newInput = scan.nextLine();
 
-                valid = true;
-                input = newInput;
+                if (ss.isValidUnPass(newInput)) {
 
-            } else {
-                System.out.println("Input contains invalid characters. Please try again.");
+                    valid = true;
+                    input = newInput;
+
+                }
+            } catch (InvalidInputException e) {
+                System.out.println("Input not valid. Please try again.");
             }
         }
         return input;
@@ -94,7 +107,7 @@ public class Stringservices {
                     input = newInput;
                 }
             } catch (IllegalArgumentException e){
-                System.out.println("Input contains invalid characters. Please try again.");
+                System.out.println("Not a valid username/password. Please try again.");
             }
         }
         return input;
@@ -116,9 +129,10 @@ public class Stringservices {
                     String prefix = phoneNumber.substring(3, phoneNumber.length() - 4);
                     String lineNumber = phoneNumber.substring(phoneNumber.length() - 4);
                     phone = ("(" + areaCode + ")" + prefix + "-" + lineNumber);
+
                 }
-            } catch (NumberFormatException | InputMismatchException e){
-                e.printStackTrace();
+            } catch (NumberFormatException | InvalidInputException | StringIndexOutOfBoundsException | InputMismatchException e){
+                //e.printStackTrace();
                 System.out.println("Not a valid phone number. Please try again");
             }
         }
@@ -148,6 +162,7 @@ public class Stringservices {
     }
 
     public int assignRandomFico(){
+
         Random fico = new Random();
         int min = 550;
         int max = 850;

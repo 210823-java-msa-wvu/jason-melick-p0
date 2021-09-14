@@ -1,5 +1,6 @@
 package App.Userapps;
 
+import Exceptions.InvalidInputException;
 import Services.Stringservices;
 import Services.Userservices;
 import Models.User;
@@ -69,17 +70,22 @@ public class Userlogin {
 
         while (!valid) {
 
+
+
+            try {
                 String newInput = scan.nextLine();
+                if (ss.isValidUnPass(newInput)) {
 
-            if (ss.isValidUnPass(newInput)) {
+                    valid = true;
+                    input = newInput;
 
-                valid = true;
-                input = newInput;
+                } else {
 
-            } else {
+                    System.out.println("Not a valid username/password. Please try again.");
 
-                System.out.println("Not a valid username/password. Please try again.");
-
+                }
+            } catch (InvalidInputException e) {
+                //e.printStackTrace();
             }
         }
         return input;
@@ -102,4 +108,11 @@ public class Userlogin {
         }
         return selection;
     }
+
+/*    public static void main(String[] args){
+        Daouser du = new Daouser();
+        String uname = "testun1!";
+        User user = du.getByUserName(uname);
+        System.out.println(user);
+    }*/
 }

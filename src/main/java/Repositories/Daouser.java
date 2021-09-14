@@ -1,7 +1,6 @@
 package Repositories;
 
 import java.sql.*;
-import Services.Stringservices;
 import Models.User;
 import static Models.utils.ConnectionUtil.getConnectionUtil;
 import java.sql.Connection;
@@ -10,8 +9,6 @@ import java.sql.Connection;
 public class Daouser{
 
     public void create(User u){
-
-        Stringservices ss = new Stringservices();
 
         try(Connection connection = getConnectionUtil().getConnection()){
 
@@ -25,7 +22,7 @@ public class Daouser{
             ps.setString(4, u.getPhNum());
             ps.setString(5, u.getUserName());
             ps.setString(6, u.getPassword());
-            ps.setInt(7, ss.assignRandomFico());
+            ps.setInt(7, u.getFico());
             ps.setString(8, u.getSsn());
 
             ps.executeUpdate();
@@ -39,12 +36,13 @@ public class Daouser{
 
         try(Connection connection = getConnectionUtil().getConnection()){
 
-            String sql = "SELECT * from users where username = ?";
+            String sql = "SELECT * from \"project0\".users where username = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, user.getUserName());
             ResultSet rs = ps.executeQuery();
 
             if(rs.next()){
+
                 User u = new User();
 
                 u.setUserId(rs.getInt("user_id"));
@@ -73,10 +71,13 @@ public class Daouser{
             String sql = "SELECT * from users where username = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, username);
+
             ResultSet rs = ps.executeQuery();
 
             if(rs.next()){
+
                 User u = new User();
+
                 u.setUserId(rs.getInt("user_id"));
                 u.setFirstName(rs.getString("first_name"));
                 u.setLastName(rs.getString("last_name"));
@@ -85,6 +86,7 @@ public class Daouser{
                 u.setSsn(rs.getString("ssn"));
                 u.setPassword(rs.getString("password"));
                 u.setFico(rs.getInt("fico"));
+
                 return u;
             }
 
@@ -104,7 +106,7 @@ public class Daouser{
 
             if(rs.next()){
                 User u = new User();
-                //u.setUserId(rs.getInt("user_id"));
+
                 u.setFirstName(rs.getString("first_name"));
                 u.setLastName(rs.getString("last_name"));
                 u.setEmail(rs.getString("email"));
@@ -112,6 +114,7 @@ public class Daouser{
                 u.setSsn(rs.getString("ssn"));
                 u.setPassword(rs.getString("password"));
                 u.setFico(rs.getInt("fico"));
+
                 return u;
             }
 
